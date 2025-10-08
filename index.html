@@ -12,36 +12,37 @@
 :root { color-scheme: light; }
 html { -webkit-text-size-adjust: 100%; }
 
-/* --- Fine-tuned mobile header scaling --- */
+/* --- Fine-tuned mobile header scaling (smaller fit) --- */
 @media (max-width: 640px) {
   /* Header panels */
   .ph, .r-head {
-    min-height: 60px;
-    padding: 0 12px;
-    border-radius: 12px;
+    min-height: 56px;        /* slightly smaller height */
+    padding: 0 10px;         /* tighter padding */
+    border-radius: 10px;     /* smoother edges */
   }
 
   /* Logo */
   .logo {
-    height: 40px;
-    transform: scaleX(1.15);
+    height: 36px;            /* smaller logo */
+    transform: scaleX(1.1);  /* subtle horizontal stretch */
   }
 
   /* Title text */
   .brand h1 {
-    font-size: clamp(18px, 5.5vw, 22px);
+    font-size: clamp(16px, 5vw, 20px);  /* smaller and tighter fit */
   }
 
   /* Subtitle text */
   .brand small {
-    font-size: clamp(11px, 3.5vw, 13px);
+    font-size: clamp(10px, 3.2vw, 12px); /* slightly reduced */
   }
 
-  /* Reduce overall border radius for mobile */
+  /* Reduce border radius globally */
   .panel {
-    border-radius: 14px;
+    border-radius: 12px;
   }
 }
+
 
 /* ---- Mobile optimization (≤ 640px) ---- */
 @media (max-width: 640px) {
