@@ -12,56 +12,27 @@
 :root { color-scheme: light; }
 html { -webkit-text-size-adjust: 100%; }
 
-/* --- Fine-tuned mobile header scaling (smaller fit) --- */
-@media (max-width: 640px) {
-  /* Header panels */
-  .ph, .r-head {
-    min-height: 56px;        /* slightly smaller height */
-    padding: 0 10px;         /* tighter padding */
-    border-radius: 10px;     /* smoother edges */
+/* --- Mobile header scaling (≤ 640px) --- */
+@media (max-width: 640px){
+  /* Header strip: thinner & tighter */
+  .ph, .r-head{
+    min-height:56px;
+    padding:0 10px;
+    border-radius:12px;
   }
 
-  /* Logo */
-  .logo {
-    height: 36px;            /* smaller logo */
-    transform: scaleX(1.1);  /* subtle horizontal stretch */
+  /* Logo: smaller, keep slight horizontal stretch */
+  .logo{
+    height:36px;
+    transform:scaleX(1.1);
   }
 
-  /* Title text */
-  .brand h1 {
-    font-size: clamp(16px, 5vw, 20px);  /* smaller and tighter fit */
-  }
+  /* Title & subtitle sizes */
+  .brand h1{ font-size:clamp(16px, 5vw, 20px); }
+  .brand small{ font-size:clamp(10px, 3.2vw, 12px); }
 
-  /* Subtitle text */
-  .brand small {
-    font-size: clamp(10px, 3.2vw, 12px); /* slightly reduced */
-  }
-
-  /* Reduce border radius globally */
-  .panel {
-    border-radius: 12px;
-  }
-}
-
-
-/* ---- Mobile optimization (≤ 640px) ---- */
-@media (max-width: 640px) {
-  .wrap { margin:16px auto; padding:0 12px; }
-  .panel { border-radius:14px; }
-  .ph, .r-head { min-height:64px; padding:0 12px; }
-
-  .logo { height:42px; transform:scaleX(1.15); }
-  .brand h1 { font-size:clamp(18px, 6vw, 24px); }
-  .brand small { font-size:clamp(11px, 3.6vw, 13px); }
-
-  .row, .row-ac, .row-4 { grid-template-columns:1fr; gap:10px; }
-  input, select, textarea { font-size:16px; padding:10px 12px; }
-
-  .section { padding:14px; }
-  .kv { padding:10px; }
-  .pair, .v, .money { font-size:15px; }
-  .btn { font-size:13px; padding:10px 12px; }
-  .qr { width:96px; height:96px; }
+  /* Panels: slightly smaller corners on mobile */
+  .panel{ border-radius:14px; }
 }
 
 a { color: inherit; }
