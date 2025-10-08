@@ -162,6 +162,31 @@ a { color: inherit; }
   .summary .top{display:flex;align-items:center;gap:20px;margin-bottom:10px}
   .summary h2{margin:0;color:#7b0f1d;font-family:"Zen Dots", system-ui, sans-serif}
   .summary small{color:#ffcb83;font-family:"Zen Dots", system-ui, sans-serif}
+  
+  /* Force light mode styling */
+html, body {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  color-scheme: only light;
+}
+
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  input, select, textarea {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .panel, .section, .wrap {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+}
+
 </style>
 </head>
 <body>
