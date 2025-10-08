@@ -12,20 +12,6 @@
 :root { color-scheme: light; }
 html { -webkit-text-size-adjust: 100%; }
 
-/* Explicit dark theme (optional) */
-@media (prefers-color-scheme: dark) {
-  html, body { background:#0b0f14; color:#f5f7fb; }
-  .panel { background:#12161c; border-color:#2a2f3a; }
-  .ph, .r-head { background: var(--maroon); color:#fff; }
-  label, .k { color:#cbd5e1; }
-  .section { border-bottom-color:#1f2430; }
-  .line { border-top-color:#2a2f3a; }
-  .kv { border-color:#2a2f3a; }
-  .note { background:#0f131a; border-color:#2a2f3a; color:#d2d8e6; }
-  .money, .v, .pair, .hint { color:#f5f7fb; }
-  a { color:#f5f7fb; }
-}
-
 /* ---- Mobile optimization (≤ 640px) ---- */
 @media (max-width: 640px) {
   .wrap { margin:16px auto; padding:0 12px; }
@@ -162,30 +148,7 @@ a { color: inherit; }
   .summary .top{display:flex;align-items:center;gap:20px;margin-bottom:10px}
   .summary h2{margin:0;color:#7b0f1d;font-family:"Zen Dots", system-ui, sans-serif}
   .summary small{color:#ffcb83;font-family:"Zen Dots", system-ui, sans-serif}
-  
-  /* Force light mode styling */
-html, body {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-  color-scheme: only light;
-}
 
-@media (prefers-color-scheme: dark) {
-  html, body {
-    background-color: #ffffff !important;
-    color: #000000 !important;
-  }
-
-  input, select, textarea {
-    background-color: #ffffff !important;
-    color: #000000 !important;
-  }
-
-  .panel, .section, .wrap {
-    background-color: #ffffff !important;
-    color: #000000 !important;
-  }
-}
 
 </style>
 </head>
