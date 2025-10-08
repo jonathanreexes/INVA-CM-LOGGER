@@ -28,9 +28,7 @@ All calculations and data handling are processed client-side, with results trans
 INVA-PIREP-Logger/
 ├── index.html # Main front-end interface
 ├── assets/ # Logos and fonts
-│ ├── INVA Brand Logo.png
-│ └── ZenDots-Regular.ttf
-├── INVA_CM_Logger_Detailed_Final.pdf # Internal technical guide
+│ └── INVA Brand Logo.png
 ├── README.md # Project overview
 └── LICENSE.txt # Credits and terms of use
 
