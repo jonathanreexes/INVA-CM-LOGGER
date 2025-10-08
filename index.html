@@ -12,6 +12,37 @@
 :root { color-scheme: light; }
 html { -webkit-text-size-adjust: 100%; }
 
+/* --- Fine-tuned mobile header scaling --- */
+@media (max-width: 640px) {
+  /* Header panels */
+  .ph, .r-head {
+    min-height: 60px;
+    padding: 0 12px;
+    border-radius: 12px;
+  }
+
+  /* Logo */
+  .logo {
+    height: 40px;
+    transform: scaleX(1.15);
+  }
+
+  /* Title text */
+  .brand h1 {
+    font-size: clamp(18px, 5.5vw, 22px);
+  }
+
+  /* Subtitle text */
+  .brand small {
+    font-size: clamp(11px, 3.5vw, 13px);
+  }
+
+  /* Reduce overall border radius for mobile */
+  .panel {
+    border-radius: 14px;
+  }
+}
+
 /* ---- Mobile optimization (≤ 640px) ---- */
 @media (max-width: 640px) {
   .wrap { margin:16px auto; padding:0 12px; }
