@@ -219,6 +219,73 @@ input, select, textarea { width: 100%; box-sizing: border-box; }
   .brand h1    { font-size: 28px; }
   #rNo         { font-size: 14px; }
 }
+
+/* =============== UNIVERSAL BORDER CONSISTENCY + MOBILE rNo =============== */
+
+/* 1) One knob for all border widths (auto-tuned for high-DPI) */
+:root { --bdw: 1px; }
+@media (min-resolution: 2dppx) {
+  :root { --bdw: 0.75px; }
+}
+@media (min-resolution: 3dppx) {
+  :root { --bdw: 0.5px; }
+}
+
+/* Apply the variable to all bordered UI bits */
+.panel,
+.kv,
+.note,
+.qr,
+input, select, textarea, .pill,
+.btn,
+.panel-footer,
+.section,
+.line {
+  border-width: var(--bdw) !important;
+}
+
+/* Ensure dashed rule keeps using the same thickness */
+.line {
+  border-top-width: var(--bdw) !important;
+}
+
+/* Keep header separators crisp too */
+.section { border-bottom-width: var(--bdw) !important; }
+
+/* 2) Put the receipt number bottom-right on mobile (iOS/Android) */
+@media (max-width: 640px) {
+  .panel { position: relative; }
+
+  .r-head #rNo {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    background: #fff;
+    padding: 6px 10px;
+    border: var(--bdw) solid var(--line);
+    border-radius: 10px;
+    color: var(--ink);
+    font-family: "Zen Dots", system-ui, sans-serif;
+    font-size: 12px;
+    letter-spacing: .015em;
+    white-space: nowrap;
+    z-index: 2;
+  }
+
+  .panel { padding-bottom: 56px; }
+
+  .r-head { padding-right: 12px; }
+}
+
+/* Print: keep classic placement and avoid floating chip */
+@media print {
+  .r-head #rNo {
+    position: static !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+  }
+}
 </style>
 </head>
 <body>
