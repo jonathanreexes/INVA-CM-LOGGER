@@ -134,18 +134,17 @@ html, body {
     align-items:center;justify-content:space-between;
     padding:0 18px;min-height:84px
   }
-  .brand{display:flex;align-items:center;gap:20px}
-  .logo{
-  height:58px;
-  width:auto;
-  display:block;
-  transform:scaleX(1.25);
-  image-rendering:auto;      /* prevent blurring */
-  filter:none;               /* ensure white stays white */
-  opacity:1;                 /* no dimming */
-  mix-blend-mode:normal;     /* stops gray blending on maroon bg */
+ .logo {
+  height: 58px;
+  width: auto;
+  display: block;
+  transform: scaleX(1.25);
+  filter: brightness(1.08) contrast(1.05);
+  opacity: 1;
+  mix-blend-mode: normal;
+  image-rendering: -webkit-optimize-contrast;
+  background-color: transparent;
 }
-
   .brand h1{
     margin:0;font-family:"Zen Dots", system-ui, sans-serif;
     font-size:26px;font-weight:700;letter-spacing:.01em;line-height:1.1
