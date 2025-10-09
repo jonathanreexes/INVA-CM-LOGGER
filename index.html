@@ -112,6 +112,11 @@ html { -webkit-text-size-adjust: 100%; }
 
 a { color: inherit; }
 
+/* Global base font */
+html, body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
   /* Layout */
   .wrap{
     max-width:1250px;margin:28px auto;padding:0 16px;
@@ -160,6 +165,49 @@ a { color: inherit; }
   .hint{font-size:11px;color:#7a89a7;margin-top:4px}
   .error{border-color:var(--err)!important;box-shadow:0 0 0 3px rgba(225,29,72,.15)!important}
   .msg{color:#b91c1c;font-size:12px;margin-top:4px;display:none}
+
+  /* Four-column row (time/fuel block) */
+.row-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+.row-4 > * { min-width: 0; }
+
+/* Grid rows — fix overlapping */
+.row,
+.row-ac,
+.row-4 {
+  display: grid;
+  gap: 12px;           /* consistent spacing */
+}
+
+.row   { grid-template-columns: 1fr 1fr; }
+.row-ac{ grid-template-columns: 2fr 1fr; }
+.row-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Critical: allow grid children to shrink inside the cell */
+.row > *,
+.row-ac > *,
+.row-4 > * {
+  min-width: 0;
+}
+
+/* Make sure form controls fill the cell */
+input, select, textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Readonly pill */
+.pill{
+  background:#fff;
+  border:1px solid #d7deea;
+  border-radius:12px;
+  padding:10px 12px;
+  font-size:14px;
+  color:#000;
+}
 
   /* Readonly pill */
   .pill{
