@@ -35,87 +35,18 @@ html { -webkit-text-size-adjust: 100%; }
   .panel{ border-radius:14px; }
 }
 
-/* Panels: slightly smaller corners on mobile */
-.panel{ border-radius:14px; }
-
-/* ===== 1) QR stays a square on all screens ===== */
-.qr{
-  width: 120px;
-  aspect-ratio: 1 / 1;         
-}
-.qr img{
-  width: 100%;
-  height: 100%;
-  object-fit: contain;          
-}
-
-/* Smaller square on phones */
-@media (max-width: 640px){
-  .qr{ width: 96px; }
-}
-
-/* ===== 2) Header band (logo/title) scaled consistently ===== */
-@media (max-width: 640px){
-  .ph, .r-head{
-    min-height: 56px;
-    padding: 0 12px;
-    border-radius: 12px;
-  }
-  .logo{ height: 36px; transform: scaleX(1.1); }
-  .brand h1{ font-size: clamp(16px, 5vw, 20px); }
-  .brand small{ font-size: clamp(10px, 3.2vw, 12px); }
-}
-
-/* Tablets (iPad width range) — align proportions with desktop feel */
-@media (min-width: 768px) and (max-width: 1024px){
-  .ph, .r-head{
-    min-height: 64px;
-    padding: 0 14px;
-  }
-  .logo{ height: 44px; transform: scaleX(1.15); }
-  .brand h1{ font-size: clamp(18px, 3.6vw, 22px); }
-  .brand small{ font-size: clamp(11px, 2.4vw, 13px); }
-}
-
-/* ===== 3) Section padding & text scale for tight mobile fit ===== */
-@media (max-width: 640px){
-  .section{ padding: 14px; }
-  .kv{ padding: 10px; }
-  .pair, .v, .money{ font-size: 15px; }
-  .btn{ font-size: 13px; padding: 10px 12px; }
-}
-
-/* ===== 4) Prevent stretched controls on tablets (iPad) ===== */
-.row > div, .row-ac > div, .row-4 > div{ min-width: 0; }
-
-/* Tweak Aircraft + Multiplier ratio on tablets */
-@media (min-width: 768px) and (max-width: 1024px){
-  .row-ac{ grid-template-columns: 1.6fr 1fr; }
-}
-
-/* Equal split for phones */
-@media (max-width: 640px){
-  .row-ac{ grid-template-columns: 1fr 1fr; }
-}
-
-/* ===== 5) Match panel rounding/border feel across devices ===== */
-@media (max-width: 640px){
-  .panel{ border-radius: 14px; }
-}
-
-/* 👇 your existing code continues here 👇 */
-:root{
-  --maroon:#7b0f1d; --maroon-600:#8a1626;
-  --gold:#ffcb83; --ink:#101319;
-  --line:#e6eaf2; --bg:#f6f7fb; --err:#e11d48;
-}
-
 a { color: inherit; }
 
-/* Global base font */
-html, body {
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-}
+  :root{
+    --maroon:#7b0f1d; --maroon-600:#8a1626;
+    --gold:#ffcb83; --ink:#101319;
+    --line:#e6eaf2; --bg:#f6f7fb; --err:#e11d48;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif
+  }
 
   /* Layout */
   .wrap{
@@ -134,25 +65,12 @@ html, body {
     align-items:center;justify-content:space-between;
     padding:0 18px;min-height:84px
   }
- .logo {
-  height: 58px;
-  width: auto;
-  display: block;
-  transform: scale(1.18);
-  image-rendering: -webkit-optimize-contrast;
-  background-color: transparent;
-  opacity: 1;
-  align-self: center;
-}
-
+  .brand{display:flex;align-items:center;gap:20px}
+  .logo{height:58px;width:auto;display:block;transform:scaleX(1.25)}
   .brand h1{
     margin:0;font-family:"Zen Dots", system-ui, sans-serif;
     font-size:26px;font-weight:700;letter-spacing:.01em;line-height:1.1
   }
-  @media (max-width: 640px){
-  .logo{ height:36px; transform:scaleX(1.1); }
-}
-
   .brand small{
     display:block;margin-top:2px;color:var(--gold);
     font-family:"Zen Dots", system-ui, sans-serif;
@@ -178,49 +96,6 @@ html, body {
   .hint{font-size:11px;color:#7a89a7;margin-top:4px}
   .error{border-color:var(--err)!important;box-shadow:0 0 0 3px rgba(225,29,72,.15)!important}
   .msg{color:#b91c1c;font-size:12px;margin-top:4px;display:none}
-
-  /* Four-column row (time/fuel block) */
-.row-4 {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-}
-.row-4 > * { min-width: 0; }
-
-/* Grid rows — fix overlapping */
-.row,
-.row-ac,
-.row-4 {
-  display: grid;
-  gap: 12px;           /* consistent spacing */
-}
-
-.row   { grid-template-columns: 1fr 1fr; }
-.row-ac{ grid-template-columns: 2fr 1fr; }
-.row-4 { grid-template-columns: repeat(4, 1fr); }
-
-/* Critical: allow grid children to shrink inside the cell */
-.row > *,
-.row-ac > *,
-.row-4 > * {
-  min-width: 0;
-}
-
-/* Make sure form controls fill the cell */
-input, select, textarea {
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* Readonly pill */
-.pill{
-  background:#fff;
-  border:1px solid #d7deea;
-  border-radius:12px;
-  padding:10px 12px;
-  font-size:14px;
-  color:#000;
-}
 
   /* Readonly pill */
   .pill{
@@ -277,64 +152,73 @@ input, select, textarea {
   .summary h2{margin:0;color:#7b0f1d;font-family:"Zen Dots", system-ui, sans-serif}
   .summary small{color:#ffcb83;font-family:"Zen Dots", system-ui, sans-serif}
 
-/* ==== FINAL RESPONSIVE OVERRIDES (place at end) ==== */
 
-/* iPad / Tablets */
-@media (max-width: 1024px) {
-  .ph, .r-head {
-    min-height: 64px;
-    padding: 0 14px;
-  }
-  .logo { height: 44px; transform: scaleX(1.15); }
-  .brand h1 { font-size: clamp(18px, 3.6vw, 22px); }
-  .brand small { font-size: clamp(11px, 2.4vw, 13px); }
+/* =============== FINAL RESPONSIVE PATCH (append at end) =============== */
 
-  /* Prevent stretched inputs on iPad */
-  .row > div, .row-ac > div, .row-4 > div { min-width: 0; }
-  .row-ac { grid-template-columns: 1.6fr 1fr; }
+/* Keep the original logo look—no brightening/blending/scaling overrides */
+.brand .logo {
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  transform: none !important;
+  opacity: 1 !important;
+  image-rendering: auto !important;
+  background: transparent !important;
 }
 
-/* Phones */
-@media (max-width: 640px) {
-  /* Header band + logo scale down */
-  .ph, .r-head {
-    min-height: 56px;
-    padding: 0 12px;
-    border-radius: 12px;
-  }
-  .logo { height: 36px; transform: scaleX(1.1); }
-  .brand h1 { font-size: clamp(16px, 5vw, 20px); }
-  .brand small { font-size: clamp(10px, 3.2vw, 12px); }
+/* Header alignment & spacing (desktop preserved) */
+.ph, .r-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-  /* Panels + spacing + text */
-  .panel { border-radius: 14px; }
+/* Grids: prevent overlap/stretch on any device */
+.row, .row-ac, .row-4 { gap: 12px; }
+.row   > *, .row-ac > *, .row-4 > * { min-width: 0; }
+input, select, textarea { width: 100%; box-sizing: border-box; }
+
+/* QR: true square & centered label */
+.qr { aspect-ratio: 1 / 1; display: grid; place-items: center; }
+.qr img { width: 100%; height: 100%; object-fit: contain; }
+.qr .hint { text-align: center; width: 100%; }
+
+/* ==================== Tablet (iPad) ==================== */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .ph, .r-head { min-height: 70px; padding: 0 16px; }
+  .brand { gap: 16px; }
+  .brand .logo { height: 52px; transform: none; }
+  .brand h1    { font-size: 24px; }
+  .brand small { font-size: 13px; }
+  #rNo         { font-size: 12px; letter-spacing: .018em; white-space: nowrap; }
+
+  .row-ac { grid-template-columns: 1.5fr 1fr; }
+  .qr { width: 120px; }
+}
+
+/* ==================== Mobile (≤ 640px) ==================== */
+@media (max-width: 640px) {
+  .wrap { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .ph, .r-head { min-height: 60px; padding: 0 12px; }
+  .brand { gap: 14px; }
+  .brand .logo { height: 44px; transform: none; }
+  .brand h1    { font-size: clamp(18px, 5.4vw, 21px); }
+  .brand small { font-size: clamp(11px, 3.4vw, 12px); }
+  #rNo         { font-size: 11px; letter-spacing: .015em; white-space: nowrap; }
+
   .section { padding: 14px; }
-  .kv { padding: 10px; }
-  .pair, .v, .money { font-size: 15px; }
-  .btn { font-size: 13px; padding: 10px 12px; }
+  .kv      { padding: 10px 12px; }
+  .btn     { font-size: 13px; padding: 10px 12px; }
 
-  /* Aircraft + Multiplier equal split on phones */
-  .row-ac { grid-template-columns: 1fr 1fr; }
-
-  /* Reduce general gaps slightly */
-  .grid, .pair, .row, .row-ac, .row-4 { gap: 6px; }
+  .qr { width: 112px; }
 }
 
-/* QR: force true square everywhere and stop stretching */
-.qr {
-  width: 120px;
-  aspect-ratio: 1 / 1;
-  height: auto !important;               /* override any fixed height */
+/* ==================== Large desktop (≥ 1280px) ==================== */
+@media (min-width: 1280px) {
+  .ph, .r-head { min-height: 84px; }
+  .brand .logo { height: 60px; }
+  .brand h1    { font-size: 28px; }
+  #rNo         { font-size: 14px; }
 }
-.qr img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-@media (max-width: 640px) {
-  .qr { width: 96px; }                   /* smaller square on phones */
-}
-
 </style>
 </head>
 <body>
