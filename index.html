@@ -92,7 +92,7 @@
     body{background:#fff}
     .r-head #rNo { position: static !important; padding: 0 !important; border: 0 !important; background: transparent !important; }
   }
-  
+
 /* FINAL override: make rNo even smaller on mobile, no layout push */
 @media (max-width: 640px){
   .r-head #rNo{ font-size: 4px !important; }
@@ -176,8 +176,18 @@
   .panel, .kv, .note, .qr, input, select, textarea, .pill, .btn, .panel-footer, .section, .line { border-width: var(--bdw) !important; }
   .line { border-top-width: var(--bdw) !important; }
   .section { border-bottom-width: var(--bdw) !important; }
+
+  /* FINAL-FINAL: shrink rNo further on mobile without layout push */
+@media (max-width: 640px){
+  .r-head #rNo{
+    font-size: 4px !important;                     /* smaller text */
+    transform: translateY(-50%) scale(0.85) !important; /* tiny visual shrink */
+    transform-origin: right center !important;
+  }
+}
+
 </style>
-</head>
+</head>D
 <body>
   <!-- SUMMARY MODE (opened from shared link) -->
   <div id="summaryRoot" style="display:none"></div>
