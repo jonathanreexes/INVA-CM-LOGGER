@@ -14,7 +14,6 @@
     --maroon:#7b0f1d; --maroon-600:#8a1626; --gold:#ffcb83; --ink:#101319;
     --line:#e6eaf2; --bg:#f6f7fb; --err:#e11d48; --bdw:1px;
   }
-
   @media (min-resolution:2dppx){ :root{ --bdw:.75px } }
   @media (min-resolution:3dppx){ :root{ --bdw:.5px } }
 
@@ -32,7 +31,7 @@
   .logo{height:58px;width:auto;display:block;transform:scaleX(1.25)}
   .brand h1{ margin:0;font-family:"Zen Dots", system-ui, sans-serif; font-size:26px;font-weight:700;letter-spacing:.01em;line-height:1.1 }
   .brand small{ display:block;margin-top:2px;color:var(--gold); font-family:"Zen Dots", system-ui, sans-serif; font-size:14px;letter-spacing:.01em;font-weight:500 }
-  #rNo{ font-family:"Zen Dots", system-ui, sans-serif; font-size:12px;letter-spacing:.01em;font-weight:500;color:#fff }
+  #rNo{ font-family:"Zen Dots", system-ui, sans-serif; font-size:12px;letter-spacing:.01em;font-weight:500;color:#fff; white-space:nowrap }
 
   /* Form side */
   .pb{padding:18px}
@@ -76,7 +75,7 @@
   .note{font-size:12px;color:#6b7280;background:#f8fafc;border:1px solid var(--line);padding:10px;border-radius:12px;margin-top:10px}
   .line{border:none;border-top:1px dashed #e6eaf2;margin:12px 0}
 
-  /* Panel footer (T&C + credits) */
+  /* Panel footer */
   .panel-footer { margin-top:20px; padding:12px 16px; border-top:1px solid #eee; background:#fafafa; border-bottom-left-radius:18px; border-bottom-right-radius:18px }
   .panel-footer p { font-size:11px; line-height:1.6; color:#666; text-align:center; margin:0; font-family:Inter, system-ui, sans-serif }
   .panel-footer strong { color:#333; font-weight:700 }
@@ -96,14 +95,13 @@
   .summary h2{margin:0;color:#7b0f1d;font-family:"Zen Dots", system-ui, sans-serif}
   .summary small{color:#ffcb83;font-family:"Zen Dots", system-ui, sans-serif}
 
-  /* Keep the original logo look */
+  /* Keep original logo look */
   .brand .logo { filter: none !important; mix-blend-mode: normal !important; transform: none !important; opacity: 1 !important; image-rendering: auto !important; background: transparent !important; }
 
   /* QR: true square & centered label */
   .qr { aspect-ratio: 1 / 1; display: grid; place-items: center; }
   .qr img { width: 100%; height: 100%; object-fit: contain; }
   .qr .hint { text-align: center; width: 100%; }
-
   /* ==================== Tablet (iPad) ==================== */
   @media (min-width: 768px) and (max-width: 1024px) {
     .ph, .r-head { min-height: 70px; padding: 0 16px; }
@@ -119,27 +117,34 @@
   /* ==================== Mobile (≤ 640px) ==================== */
   @media (max-width: 640px) {
     .wrap { grid-template-columns: 1fr !important; gap: 16px !important; }
+
     .ph, .r-head { min-height: 60px; padding: 0 12px; }
+    .r-head { position: relative; } /* enable absolute child without layout push */
+
     .brand { gap: 14px; }
-    .brand .logo { height: 36px !important; transform: scaleX(1.1) !important; } /* restored compact */
-    .brand h1 { font-size: clamp(16px, 5.4vw, 20px) !important; }                 /* restored compact */
-    .brand small { font-size: clamp(10px, 3.4vw, 12px) !important; }              /* restored compact */
+    .brand .logo { height: 36px !important; transform: scaleX(1.1) !important; }
+    .brand h1 { font-size: clamp(16px, 5.4vw, 20px) !important; }
+    .brand small { font-size: clamp(10px, 3.4vw, 12px) !important; }
+
+    /* rNo: ultra-small & absolutely positioned (no push) */
     #rNo {
-      position: static !important;            /* inline (no absolute pill) */
-      flex: 0 0 auto;
-      margin-left: auto !important;           /* push to right edge */
+      position: absolute !important;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
       background: transparent !important;
       padding: 0 !important;
       border: 0 !important;
       color: #fff !important;
       font-family: "Zen Dots", system-ui, sans-serif;
-      font-size: 9px !important;              /* very small so it fits */
-      letter-spacing: .02em;
+      font-size: 7.5px !important;   /* smaller than before */
+      letter-spacing: .01em;
       white-space: nowrap;
-      text-align: right;                      /* align to right */
       line-height: 1;
       z-index: 2;
+      text-align: right;
     }
+
     .section { padding: 14px; }
     .kv { padding: 10px 12px; }
     .btn { font-size: 13px; padding: 10px 12px; }
@@ -197,10 +202,7 @@
         </div>
 
         <div class="row">
-          <div>
-            <label for="date">Date</label>
-            <input id="date" type="date" />
-          </div>
+          <div><label for="date">Date</label><input id="date" type="date" /></div>
           <div>
             <label for="fn">Flight No.</label>
             <input id="fn" placeholder="AI572" maxlength="8" />
@@ -209,46 +211,22 @@
         </div>
 
         <div class="row">
-          <div>
-            <label for="dep">Departure (ICAO)</label>
-            <input id="dep" placeholder="OMAA" maxlength="4" />
-          </div>
-          <div>
-            <label for="arr">Arrival (ICAO)</label>
-            <input id="arr" placeholder="VABB" maxlength="4" />
-          </div>
+          <div><label for="dep">Departure (ICAO)</label><input id="dep" placeholder="OMAA" maxlength="4" /></div>
+          <div><label for="arr">Arrival (ICAO)</label><input id="arr" placeholder="VABB" maxlength="4" /></div>
         </div>
 
         <!-- Aircraft + Multiplier row -->
         <div class="row-ac">
-          <div>
-            <label for="aircraft">Aircraft</label>
-            <select id="aircraft"></select>
-          </div>
-          <div>
-            <label for="multiplierPill">Multiplier</label>
-            <input id="multiplierPill" class="pill" readonly tabindex="-1" aria-readonly="true" placeholder="×—.—" />
-          </div>
+          <div><label for="aircraft">Aircraft</label><select id="aircraft"></select></div>
+          <div><label for="multiplierPill">Multiplier</label><input id="multiplierPill" class="pill" readonly tabindex="-1" aria-readonly="true" placeholder="×—.—" /></div>
         </div>
         <div class="hint" style="margin-top:4px">Select aircraft; multiplier fills automatically.</div>
 
         <div class="row-4" style="margin-top:10px">
-          <div>
-            <label>Flight Time (Hours)</label>
-            <input id="ft_h" type="number" min="0" placeholder="Hours" />
-          </div>
-          <div>
-            <label>Flight Time (Minutes)</label>
-            <input id="ft_m" type="number" min="0" max="59" placeholder="Minutes" />
-          </div>
-          <div>
-            <label>Total Fuel (Kg)</label>
-            <input id="fuelTotal" type="number" placeholder="Total" />
-          </div>
-          <div>
-            <label>Used Fuel (Kg)</label>
-            <input id="fuel" type="number" placeholder="Used" />
-          </div>
+          <div><label>Flight Time (Hours)</label><input id="ft_h" type="number" min="0" placeholder="Hours" /></div>
+          <div><label>Flight Time (Minutes)</label><input id="ft_m" type="number" min="0" max="59" placeholder="Minutes" /></div>
+          <div><label>Total Fuel (Kg)</label><input id="fuelTotal" type="number" placeholder="Total" /></div>
+          <div><label>Used Fuel (Kg)</label><input id="fuel" type="number" placeholder="Used" /></div>
         </div>
 
         <div class="row" style="margin-top:10px">
@@ -322,20 +300,19 @@
         <div class="hint" id="shortlink">—</div>
       </div>
 
-      <!-- Right Footer (Custom T&C + Credits) -->
       <div class="panel-footer">
         <p>
           © 2025 <strong>Indian Virtual (INVA)</strong>. All rights reserved.<br>
           <span>
-            This tool is developed exclusively for <strong>INVA Career Mode</strong>. All data and calculations are for simulation use within <em>Infinite Flight</em> and hold no real-world financial value. Receipts are intended solely for internal tracking under <strong>INVA</strong>.
-            <br><br>
-            All content is proprietary to <strong>INVA</strong> and designated exclusively for virtual use within <em>Infinite Flight</em>. Any reproduction or use outside this context is strictly prohibited.
-            <br><br>
+            This tool is developed exclusively for <strong>INVA Career Mode</strong>.
+            All data and calculations are for simulation use within <em>Infinite Flight</em> and hold no real-world financial value. Receipts are intended solely for internal tracking under <strong>INVA</strong>.<br><br>
+            All content is proprietary to <strong>INVA</strong> and designated exclusively for virtual use within <em>Infinite Flight</em>.
+            Any reproduction or use outside this context is strictly prohibited.<br><br>
             <span style="color:#7b0f1d;font-weight:600">Authored and Developed by INVA</span>
           </span>
         </p>
       </div>
-    </div> <!-- /panel (right) -->
+    </div> <!-- /panel right -->
   </div> <!-- /wrap -->
 <script>
 /* ====== LOGO FALLBACK LOADER ====== */
@@ -412,11 +389,12 @@ function fillAircraftSelect(){
 }
 
 /* ---------- Validation helpers ---------- */
-const rePilot=/^INVA[0-9]{3}$/; // INVA + exactly 3 digits (e.g., INVA001)
+const rePilot=/^INVA[0-9]{3}$/;
 const reFlight=/^[A-Z]{2,4}[0-9]{2,4}$/;
 const reICAO=/^[A-Z]{4}$/;
 function minsFromHM(h,m){const hh=Math.max(0,Number(h)||0);const mm=Math.max(0,Math.min(59,Number(m)||0));return hh*60+mm;}
-function hmDisp(mins){const h=Math.floor(mins/60),m=mins%60;return `${h}h ${m}m`; }
+function hmDisp(mins){const h=Math.floor(mins/60),m=mins%60;return `${h}h ${m}m`;}
+
 /* ---------- Compute ---------- */
 function compute(d){
   const rank=RANKS[d.rank]||{base:0,maxBonus:0};
@@ -431,7 +409,7 @@ function compute(d){
   let score=(lf+ppp)/2; if(score>1)score=1; if(score<0)score=0;
   const payloadBonus=Math.min(score*rank.maxBonus,rank.maxBonus);
   const subtotal=flightEarnings+payloadBonus;
-  const deductions=+(subtotal*0.15).toFixed(2); // 15% tax
+  const deductions=+(subtotal*0.15).toFixed(2);
   const grand=Math.max(0, +(subtotal - deductions).toFixed(2));
   const usd=+(grand/83).toFixed(2);
   return {baseRate:rank.base, mult:ac.mult, flightEarnings, payloadBonus, deductions, grand, usd};
@@ -448,10 +426,9 @@ async function sendToSheet(payload){
     return { ok:false, error: String(err) };
   }
 }
-
 /* ---------- Render + QR + Share + Log ---------- */
 async function render(){
-  const pilot=$("pilot").value.toUpperCase().trim(); // force uppercase before validation
+  const pilot=$("pilot").value.toUpperCase().trim();
   const rank=$("rank").value;
   const dateVal=$("date").value;
   const fn=$("fn").value.toUpperCase().trim();
@@ -465,7 +442,6 @@ async function render(){
   const fuel=+($("fuel").value||0);
   const notes=$("notes").value.trim();
 
-  // Validate
   const mark=(el,bad)=>el.classList.toggle("error",bad);
   let bad=false;
   const pilotBad=!rePilot.test(pilot); mark($("pilot"),pilotBad); bad|=pilotBad;
@@ -476,7 +452,6 @@ async function render(){
   const fuelBad=fuel<=0; mark($("fuel"),fuelBad); bad|=fuelBad;
   if(bad){ alert("Please fix the highlighted fields (Pilot Callsign must be INVA###)."); return; }
 
-  // Compute + Fill
   const e=compute({rank, aircraft, mins, pax, cargo, fuel});
   $("o_pilot").textContent=pilot||"—";
   $("o_rank").textContent=rank||"—";
@@ -496,18 +471,15 @@ async function render(){
   $("o_usd").textContent=moneyUSD(e.usd);
   $("ts").textContent=new Date().toLocaleString();
 
-  // Deterministic receipt number
   const hash=(pilot+fn+dep+arr+aircraft+mins).split("").reduce((a,c)=>((a<<5)-a)+c.charCodeAt(0),0);
   const receiptNo="INVA-"+String(Math.abs(hash)%9000+1000);
   $("rNo").textContent="Receipt #: "+receiptNo;
 
-  // Summary payload + share URL
   const minimal={pilot,rank,fn,dep,arr,time:hmDisp(mins),total:e.grand,ts:Date.now()};
   const payload=enc(minimal);
   const url=`${baseUrlNoQuery()}?view=summary&d=${encodeURIComponent(payload)}`;
   $("shortlink").textContent=url;
 
-  // QR
   const img=document.createElement("img");
   img.alt="QR";
   img.src=`https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${encodeURIComponent(url)}`;
@@ -515,17 +487,15 @@ async function render(){
   qrw.innerHTML="";
   qrw.appendChild(img);
 
-  // Copy link
   $("btnShare").onclick=async()=>{
     try{ await navigator.clipboard.writeText(url); alert("Share link copied!"); }
     catch{ prompt("Copy this link:", url); }
   };
 
-  // Log (optional)
   const log = {
     token: LOG_TOKEN, sheet: SHEET_TAB, date: dateVal, receipt_no: receiptNo, pilot, rank, flight_no: fn, dep, arr, aircraft,
-    flight_time_h: Math.floor(mins/60), flight_time_m: mins%60, passengers: pax, cargo_kg: cargo,
-    fuel_total_kg: fuelTotal, fuel_used_kg: fuel, base_rate_inr_per_hr: e.baseRate, multiplier: e.mult,
+    flight_time_h: Math.floor(mins/60), flight_time_m: mins%60, passengers: pax, cargo_kg: cargo, fuel_total_kg: fuelTotal, fuel_used_kg: fuel,
+    base_rate_inr_per_hr: e.baseRate, multiplier: e.mult,
     flight_earnings_inr: Number(e.flightEarnings.toFixed(2)), payload_bonus_inr: Number(e.payloadBonus.toFixed(2)),
     deductions_inr: Number(e.deductions.toFixed(2)), grand_total_inr: Number(e.grand.toFixed(2)),
     usd_est: Number(e.usd.toFixed(2)), share_url: url, notes
@@ -533,6 +503,7 @@ async function render(){
   const res = await sendToSheet(log);
   if(res.error){ console.warn("Logging error:", res.error); }
 }
+
 /* ---------- Summary Mode ---------- */
 function openSummaryView(){
   const p=new URLSearchParams(location.search);
@@ -562,7 +533,6 @@ function openSummaryView(){
             <a href="${baseUrlNoQuery()}" class="btn" style="text-decoration:none;border:1px solid #d7deea;border-radius:12px;padding:10px 14px;display:inline-block;background:#fff;font-family:'Zen Dots',system-ui,sans-serif">Open full generator</a>
           </div>
         </div>`;
-      // logo loader for summary
       document.querySelectorAll('#summaryRoot img[data-candidates]').forEach(img=>{
         const list = JSON.parse(img.getAttribute("data-candidates")||"[]");
         let i=0;
