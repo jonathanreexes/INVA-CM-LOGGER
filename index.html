@@ -186,30 +186,55 @@
   }
 }
 
-/* ===== iOS/iPadOS form-control sizing fix (uniform pill height) ===== */
+/* ===== iOS/iPadOS Safari: force uniform pill/field height (exact match) ===== */
 @supports (-webkit-touch-callout: none) {
+  :root { --ctlH: 44px; } /* same visual height as other inputs */
+
+  /* normalize iOS field behavior */
   input, select, textarea, .pill {
     font-size: 16px !important;
     box-sizing: border-box !important;
   }
 
+  /* unify all input, select, and pill boxes */
   select,
   input[type="date"],
   .pill {
-    height: 44px !important;
+    height: var(--ctlH) !important;
+    min-height: var(--ctlH) !important;
     padding: 10px 12px !important;
-    line-height: 22px !important;
     border-radius: 12px !important;
   }
 
-  input[type="date"]::-webkit-date-and-time-value {
-    min-height: 22px !important;
-    line-height: 22px !important;
+  /* multiplier pill alignment */
+  .pill {
+    display: flex !important;
+    align-items: center !important;
   }
 
+  /* date input fix with standard + prefixed properties */
+  input[type="date"] {
+    -webkit-appearance: none !important; /* iOS Safari */
+    appearance: none !important;         /* standard property */
+    background-color: #fff;
+  }
+
+  input[type="date"]::-webkit-datetime-edit,
+  input[type="date"]::-webkit-date-and-time-value {
+    display: inline-flex !important;
+    align-items: center !important;
+    height: calc(var(--ctlH) - 20px) !important;
+    line-height: normal !important;
+  }
+
+  /* select dropdown height consistency */
   select {
-    -webkit-appearance: menulist;
-    appearance: menulist;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23666' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 34px !important;
   }
 }
 
