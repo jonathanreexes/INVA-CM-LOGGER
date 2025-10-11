@@ -7,298 +7,336 @@
 <link rel="icon" href="assets/inva-logo.png" />
 <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet" />
 <style>
-:root { color-scheme: light; }
-html { -webkit-text-size-adjust: 100%; }
+  :root { color-scheme: light; }
+  html { -webkit-text-size-adjust: 100%; }
 
-@media (max-width: 640px){
-  .ph, .r-head{ min-height:56px; padding:0 10px; border-radius:12px; }
-  .logo{ height:36px; transform:scaleX(1.1); }
-  .brand h1{ font-size:clamp(16px,5vw,20px); }
-  .brand small{ font-size:clamp(10px,3.2vw,12px); }
-  .panel{ border-radius:14px; }
-}
-a { color:inherit; }
-
-:root{
-  --maroon:#7b0f1d; --maroon-600:#8a1626; --gold:#ffcb83;
-  --ink:#101319; --line:#e6eaf2; --bg:#f6f7fb; --err:#e11d48;
-}
-*,*::before,*::after{ box-sizing:border-box }
-html,body{
-  margin:0;background:var(--bg);color:var(--ink);
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-}
-
-.wrap{
-  max-width:1250px;margin:28px auto;padding:0 16px;
-  display:grid;gap:18px;grid-template-columns:1fr 1fr
-}
-@media(max-width:1020px){.wrap{grid-template-columns:1fr}}
-
-.panel{
-  background:#fff;border:1px solid var(--line);border-radius:18px;
-  box-shadow:0 10px 30px rgba(0,0,0,.06);overflow:hidden;position:relative
-}
-
-/* ----- Headers ----- */
-.ph,.r-head{
-  background:var(--maroon);color:#fff;display:flex;
-  align-items:center;justify-content:space-between;
-  padding:0 18px;min-height:84px
-}
-.brand{display:flex;align-items:center;gap:20px}
-.logo{height:58px;width:auto;display:block;transform:scaleX(1.25)}
-.brand h1{
-  margin:0;font-family:"Zen Dots",system-ui,sans-serif;
-  font-size:26px;font-weight:700;letter-spacing:.01em;line-height:1.1
-}
-.brand small{
-  display:block;margin-top:2px;color:var(--gold);
-  font-family:"Zen Dots",system-ui,sans-serif;
-  font-size:14px;letter-spacing:.01em;font-weight:500
-}
-#rNo{
-  font-family:"Zen Dots",system-ui,sans-serif;
-  font-size:12px;letter-spacing:.01em;font-weight:500;color:#fff
-}
-.pb{padding:18px}
-label{font-size:12px;color:#5d6b8a;display:block;margin:6px 0 6px}
-input,select,textarea{
-  width:100%;padding:10px 12px;border-radius:12px;
-  border:1px solid #d7deea;background:#fff;color:var(--ink);
-  font-size:14px;outline:none
-}
-input:focus,select:focus,textarea:focus{
-  border-color:#f4b860;box-shadow:0 0 0 3px rgba(244,184,96,.25)
-}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.row-ac{display:grid;grid-template-columns:2fr 1fr;gap:10px}
-.row-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-textarea{min-height:86px;resize:vertical}
-.hint{font-size:11px;color:#7a89a7;margin-top:4px}
-.error{border-color:var(--err)!important;box-shadow:0 0 0 3px rgba(225,29,72,.15)!important}
-.msg{color:#b91c1c;font-size:12px;margin-top:4px;display:none}
-
-.pill{
-  background:#fff;border:1px solid #d7deea;border-radius:12px;
-  padding:10px 12px;font-size:14px;color:#000;
-}
-.pill[readonly]{cursor:default;user-select:none}
-
-.btnbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-.btn{
-  display:inline-flex;align-items:center;gap:8px;padding:10px 14px;
-  border-radius:12px;border:1px solid #d7deea;background:#f8fafc;
-  color:var(--ink);cursor:pointer;
-  font-family:"Zen Dots",system-ui,sans-serif;
-  font-size:13.5px;letter-spacing:.01em;font-weight:500
-}
-.btn.primary{background:var(--maroon);color:#fff;border-color:var(--maroon)}
-.btn.primary:hover{background:var(--maroon-600)}
-.btn.ghost{background:#fff}
-
-/* ----- Receipt Side ----- */
-.section{padding:18px;border-bottom:1px solid #f0f3f8}
-.section h3{
-  margin:0 0 10px;font-size:12px;color:#7b0f1d;
-  letter-spacing:.1em;text-transform:uppercase;
-  font-family:"Zen Dots",system-ui,sans-serif;font-weight:600
-}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.kv{background:#fff;border:1px solid var(--line);padding:10px 12px;border-radius:12px}
-.k{font-size:11px;color:#6b7280}
-.v{font-size:14px;font-weight:600}
-.pair{display:flex;justify-content:space-between;gap:16px}
-.pair+.pair{margin-top:8px}
-.right{font-weight:600}
-.money{font-variant-numeric:tabular-nums}
-
-.qrwrap{display:flex;align-items:center;gap:14px;margin-top:10px}
-.qr{width:120px;height:120px;border:1px solid var(--line);border-radius:12px;background:#fff;display:grid;place-items:center;overflow:hidden}
-.qr img{max-width:100%;height:auto;display:block}
-.qr .hint{text-align:center;width:100%}
-
-.note{font-size:12px;color:#6b7280;background:#f8fafc;border:1px solid var(--line);padding:10px;border-radius:12px;margin-top:10px}
-.line{border:none;border-top:1px dashed #e6eaf2;margin:12px 0}
-
-/* ----- Footer ----- */
-.panel-footer{
-  margin-top:20px;padding:12px 16px;border-top:1px solid #eee;
-  background:#fafafa;border-bottom-left-radius:18px;border-bottom-right-radius:18px
-}
-.panel-footer p{
-  font-size:11px;line-height:1.6;color:#666;text-align:center;margin:0;
-  font-family:Inter,system-ui,sans-serif
-}
-.panel-footer strong{color:#333;font-weight:700}
-.panel-footer em{color:#7b0f1d;font-style:normal;font-weight:500}
-
-/* ----- Print + Mobile rNo tweak ----- */
-@media print{
-  .btnbar{display:none}
-  .panel{box-shadow:none;border:1px solid #ddd}
-  body{background:#fff}
-  .r-head #rNo{position:static!important;padding:0!important;border:0!important;background:transparent!important;}
-}
-
-@media (max-width:640px){
-  .r-head #rNo{
-    position:absolute;right:50%;bottom:10px;
-    transform:translateX(50%);
-    background:transparent!important;border:none!important;
-    color:#fff!important;font-size:9px;letter-spacing:.02em;
-    text-align:right;z-index:2;
+  :root{
+    --maroon:#7b0f1d; --maroon-600:#8a1626; --gold:#ffcb83; --ink:#101319;
+    --line:#e6eaf2; --bg:#f6f7fb; --err:#e11d48; --bdw:1px;
   }
-}
+
+  @media (min-resolution:2dppx){ :root{ --bdw:.75px } }
+  @media (min-resolution:3dppx){ :root{ --bdw:.5px } }
+
+  *,*::before,*::after{ box-sizing:border-box }
+  html,body{ margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif }
+
+  /* Layout */
+  .wrap{ max-width:1250px;margin:28px auto;padding:0 16px; display:grid;gap:18px;grid-template-columns:1fr 1fr }
+  @media(max-width:1020px){.wrap{grid-template-columns:1fr}}
+  .panel{ background:#fff;border:1px solid var(--line);border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,.06);overflow:hidden;position:relative;border-width:var(--bdw)}
+
+  /* Headers */
+  .ph,.r-head{ background:var(--maroon);color:#fff;display:flex; align-items:center;justify-content:space-between; padding:0 18px;min-height:84px }
+  .brand{display:flex;align-items:center;gap:20px}
+  .logo{height:58px;width:auto;display:block;transform:scaleX(1.25)}
+  .brand h1{ margin:0;font-family:"Zen Dots", system-ui, sans-serif; font-size:26px;font-weight:700;letter-spacing:.01em;line-height:1.1 }
+  .brand small{ display:block;margin-top:2px;color:var(--gold); font-family:"Zen Dots", system-ui, sans-serif; font-size:14px;letter-spacing:.01em;font-weight:500 }
+  #rNo{ font-family:"Zen Dots", system-ui, sans-serif; font-size:12px;letter-spacing:.01em;font-weight:500;color:#fff }
+
+  /* Form side */
+  .pb{padding:18px}
+  label{font-size:12px;color:#5d6b8a;display:block;margin:6px 0 6px}
+  input,select,textarea{ width:100%;padding:10px 12px;border-radius:12px; border:1px solid #d7deea;background:#fff;color:var(--ink);font-size:14px;outline:none }
+  input:focus,select:focus,textarea:focus{border-color:#f4b860;box-shadow:0 0 0 3px rgba(244,184,96,.25)}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .row-ac{display:grid;grid-template-columns:2fr 1fr;gap:10px}
+  .row-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  textarea{min-height:86px;resize:vertical}
+  .hint{font-size:11px;color:#7a89a7;margin-top:4px}
+  .error{border-color:var(--err)!important;box-shadow:0 0 0 3px rgba(225,29,72,.15)!important}
+  .msg{color:#b91c1c;font-size:12px;margin-top:4px;display:none}
+
+  /* Readonly pill */
+  .pill{ background:#fff;border:1px solid #d7deea;border-radius:12px; padding:10px 12px;font-size:14px;color:#000; }
+  .pill[readonly]{cursor:default;user-select:none}
+  .pill:focus{border-color:#f4b860;box-shadow:0 0 0 3px rgba(244,184,96,.25)}
+
+  .btnbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+  .btn{ display:inline-flex;align-items:center;gap:8px;padding:10px 14px; border-radius:12px;border:1px solid #d7deea;background:#f8fafc; color:var(--ink);cursor:pointer; font-family:"Zen Dots", system-ui, sans-serif;font-size:13.5px;letter-spacing:.01em;font-weight:500 }
+  .btn.primary{background:var(--maroon);color:#fff;border-color:var(--maroon)}
+  .btn.primary:hover{background:var(--maroon-600)}
+  .btn.ghost{background:#fff}
+
+  /* Receipt side */
+  .section{padding:18px;border-bottom:1px solid #f0f3f8}
+  .section h3{ margin:0 0 10px;font-size:12px;color:#7b0f1d; letter-spacing:.1em;text-transform:uppercase; font-family:"Zen Dots", system-ui, sans-serif;font-weight:600 }
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .kv{background:#fff;border:1px solid var(--line);padding:10px 12px;border-radius:12px}
+  .k{font-size:11px;color:#6b7280}
+  .v{font-size:14px;font-weight:600}
+  .pair{display:flex;justify-content:space-between;gap:16px}
+  .pair+.pair{margin-top:8px}
+  .right{font-weight:600}
+  .money{font-variant-numeric:tabular-nums}
+  .qrwrap{display:flex;align-items:center;gap:14px;margin-top:10px}
+  .qr{width:120px;height:120px;border:1px solid var(--line);border-radius:12px;background:#fff;display:grid;place-items:center;overflow:hidden}
+  .qr img{max-width:100%;height:auto;display:block}
+  .qr .hint{text-align:center;width:100%}
+  .note{font-size:12px;color:#6b7280;background:#f8fafc;border:1px solid var(--line);padding:10px;border-radius:12px;margin-top:10px}
+  .line{border:none;border-top:1px dashed #e6eaf2;margin:12px 0}
+
+  /* Panel footer (T&C + credits) */
+  .panel-footer { margin-top:20px; padding:12px 16px; border-top:1px solid #eee; background:#fafafa; border-bottom-left-radius:18px; border-bottom-right-radius:18px }
+  .panel-footer p { font-size:11px; line-height:1.6; color:#666; text-align:center; margin:0; font-family:Inter, system-ui, sans-serif }
+  .panel-footer strong { color:#333; font-weight:700 }
+  .panel-footer em { color:#7b0f1d; font-style:normal; font-weight:500 }
+
+  /* Print */
+  @media print{
+    .btnbar{display:none}
+    .panel{box-shadow:none;border:1px solid #ddd}
+    body{background:#fff}
+    .r-head #rNo { position: static !important; padding: 0 !important; border: 0 !important; background: transparent !important; }
+  }
+
+  /* Summary card (shared link view) */
+  .summary{max-width:560px;margin:28px auto;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 28px rgba(0,0,0,.06);padding:18px}
+  .summary .top{display:flex;align-items:center;gap:20px;margin-bottom:10px}
+  .summary h2{margin:0;color:#7b0f1d;font-family:"Zen Dots", system-ui, sans-serif}
+  .summary small{color:#ffcb83;font-family:"Zen Dots", system-ui, sans-serif}
+
+  /* Keep the original logo look */
+  .brand .logo { filter: none !important; mix-blend-mode: normal !important; transform: none !important; opacity: 1 !important; image-rendering: auto !important; background: transparent !important; }
+
+  /* QR: true square & centered label */
+  .qr { aspect-ratio: 1 / 1; display: grid; place-items: center; }
+  .qr img { width: 100%; height: 100%; object-fit: contain; }
+  .qr .hint { text-align: center; width: 100%; }
+
+  /* ==================== Tablet (iPad) ==================== */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .ph, .r-head { min-height: 70px; padding: 0 16px; }
+    .brand { gap: 16px; }
+    .brand .logo { height: 52px; transform: none; }
+    .brand h1 { font-size: 24px; }
+    .brand small { font-size: 13px; }
+    #rNo { font-size: 12px; letter-spacing: .018em; white-space: nowrap; }
+    .row-ac { grid-template-columns: 1.5fr 1fr; }
+    .qr { width: 120px; }
+  }
+
+  /* ==================== Mobile (≤ 640px) ==================== */
+  @media (max-width: 640px) {
+    .wrap { grid-template-columns: 1fr !important; gap: 16px !important; }
+    .ph, .r-head { min-height: 60px; padding: 0 12px; }
+    .brand { gap: 14px; }
+    .brand .logo { height: 36px !important; transform: scaleX(1.1) !important; } /* restored compact */
+    .brand h1 { font-size: clamp(16px, 5.4vw, 20px) !important; }                 /* restored compact */
+    .brand small { font-size: clamp(10px, 3.4vw, 12px) !important; }              /* restored compact */
+    #rNo {
+      position: static !important;            /* inline (no absolute pill) */
+      flex: 0 0 auto;
+      margin-left: auto !important;           /* push to right edge */
+      background: transparent !important;
+      padding: 0 !important;
+      border: 0 !important;
+      color: #fff !important;
+      font-family: "Zen Dots", system-ui, sans-serif;
+      font-size: 9px !important;              /* very small so it fits */
+      letter-spacing: .02em;
+      white-space: nowrap;
+      text-align: right;                      /* align to right */
+      line-height: 1;
+      z-index: 2;
+    }
+    .section { padding: 14px; }
+    .kv { padding: 10px 12px; }
+    .btn { font-size: 13px; padding: 10px 12px; }
+    .qr { width: 112px; }
+  }
+
+  /* ==================== Large desktop (≥ 1280px) ==================== */
+  @media (min-width: 1280px) {
+    .ph, .r-head { min-height: 84px; }
+    .brand .logo { height: 60px; }
+    .brand h1 { font-size: 28px; }
+    #rNo { font-size: 14px; }
+  }
+
+  /* =============== UNIVERSAL BORDER CONSISTENCY =============== */
+  :root { --bdw: 1px; }
+  @media (min-resolution: 2dppx) { :root { --bdw: 0.75px; } }
+  @media (min-resolution: 3dppx) { :root { --bdw: 0.5px; } }
+  .panel, .kv, .note, .qr, input, select, textarea, .pill, .btn, .panel-footer, .section, .line { border-width: var(--bdw) !important; }
+  .line { border-top-width: var(--bdw) !important; }
+  .section { border-bottom-width: var(--bdw) !important; }
 </style>
 </head>
 <body>
-<div id="summaryRoot" style="display:none"></div>
+  <!-- SUMMARY MODE (opened from shared link) -->
+  <div id="summaryRoot" style="display:none"></div>
 
-<div class="wrap" id="appRoot" style="display:none">
-  <!-- ===== Left Panel (PIREP Builder) ===== -->
-  <div class="panel">
-    <div class="ph">
-      <div class="brand">
-        <img class="logo" alt="INVA logo" data-candidates='["assets/inva-logo.png","assets/INVA Brand Logo.png","assets/logo.png","assets/inva-logo.jpg"]' />
-        <div>
-          <h1>Indian Virtual</h1>
-          <small>PIREP Builder</small>
-        </div>
-      </div>
-    </div>
-
-    <div class="pb">
-      <div class="row">
-        <div>
-          <label for="pilot">Pilot Callsign</label>
-          <input id="pilot" placeholder="INVA001" />
-        </div>
-        <div>
-          <label for="rank">Rank</label>
-          <select id="rank">
-            <option>Yuvraj</option><option>Rajkumar</option><option>Rajvanshi</option>
-            <option>Rajdhiraj</option><option>Maharaja</option><option>Samrat</option><option>Chhatrapati</option>
-          </select>
+  <!-- APP MODE -->
+  <div class="wrap" id="appRoot" style="display:none">
+    <!-- Left Panel (PIREP Builder) -->
+    <div class="panel">
+      <div class="ph">
+        <div class="brand">
+          <img class="logo" alt="INVA logo" data-candidates='["assets/inva-logo.png","assets/INVA Brand Logo.png","assets/logo.png","assets/inva-logo.jpg"]' />
+          <div>
+            <h1>Indian Virtual</h1>
+            <small>PIREP Builder</small>
+          </div>
         </div>
       </div>
 
-      <div class="row">
-        <div><label for="date">Date</label><input id="date" type="date" /></div>
-        <div>
-          <label for="fn">Flight No.</label>
-          <input id="fn" placeholder="AI572" maxlength="8" />
-          <div id="fnMsg" class="msg">Use 2–4 letters + 2–4 digits (e.g., AI01, INVA0001)</div>
+      <div class="pb">
+        <div class="row">
+          <div>
+            <label for="pilot">Pilot Callsign</label>
+            <input id="pilot" placeholder="INVA001" />
+          </div>
+          <div>
+            <label for="rank">Rank</label>
+            <select id="rank">
+              <option>Yuvraj</option><option>Rajkumar</option><option>Rajvanshi</option>
+              <option>Rajdhiraj</option><option>Maharaja</option><option>Samrat</option><option>Chhatrapati</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="date">Date</label>
+            <input id="date" type="date" />
+          </div>
+          <div>
+            <label for="fn">Flight No.</label>
+            <input id="fn" placeholder="AI572" maxlength="8" />
+            <div id="fnMsg" class="msg">Use 2–4 letters + 2–4 digits (e.g., AI01, INVA0001)</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="dep">Departure (ICAO)</label>
+            <input id="dep" placeholder="OMAA" maxlength="4" />
+          </div>
+          <div>
+            <label for="arr">Arrival (ICAO)</label>
+            <input id="arr" placeholder="VABB" maxlength="4" />
+          </div>
+        </div>
+
+        <!-- Aircraft + Multiplier row -->
+        <div class="row-ac">
+          <div>
+            <label for="aircraft">Aircraft</label>
+            <select id="aircraft"></select>
+          </div>
+          <div>
+            <label for="multiplierPill">Multiplier</label>
+            <input id="multiplierPill" class="pill" readonly tabindex="-1" aria-readonly="true" placeholder="×—.—" />
+          </div>
+        </div>
+        <div class="hint" style="margin-top:4px">Select aircraft; multiplier fills automatically.</div>
+
+        <div class="row-4" style="margin-top:10px">
+          <div>
+            <label>Flight Time (Hours)</label>
+            <input id="ft_h" type="number" min="0" placeholder="Hours" />
+          </div>
+          <div>
+            <label>Flight Time (Minutes)</label>
+            <input id="ft_m" type="number" min="0" max="59" placeholder="Minutes" />
+          </div>
+          <div>
+            <label>Total Fuel (Kg)</label>
+            <input id="fuelTotal" type="number" placeholder="Total" />
+          </div>
+          <div>
+            <label>Used Fuel (Kg)</label>
+            <input id="fuel" type="number" placeholder="Used" />
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:10px">
+          <div><label for="cargo">Cargo (Kg)</label><input id="cargo" type="number" placeholder="3000" /></div>
+          <div><label for="pax">Passengers (PAX)</label><input id="pax" type="number" placeholder="150" /></div>
+        </div>
+
+        <div style="margin-top:10px">
+          <label for="notes">Notes</label>
+          <textarea id="notes" placeholder="Smooth climb. Light crosswind on final. No violations."></textarea>
+        </div>
+
+        <div class="btnbar">
+          <button class="btn primary" id="btnGen">Generate / Update</button>
+          <button class="btn" id="btnPrint">Print / Save PDF</button>
+          <button class="btn ghost" id="btnShare">Copy Share Link</button>
+          <span class="hint">Generated on the client side · Logged securely in the INVA database</span>
         </div>
       </div>
-
-      <div class="row">
-        <div><label for="dep">Departure (ICAO)</label><input id="dep" placeholder="OMAA" maxlength="4" /></div>
-        <div><label for="arr">Arrival (ICAO)</label><input id="arr" placeholder="VABB" maxlength="4" /></div>
-      </div>
-
-      <div class="row-ac">
-        <div><label for="aircraft">Aircraft</label><select id="aircraft"></select></div>
-        <div><label for="multiplierPill">Multiplier</label><input id="multiplierPill" class="pill" readonly /></div>
-      </div>
-
-      <div class="hint" style="margin-top:4px">Select aircraft; multiplier fills automatically.</div>
-
-      <div class="row-4" style="margin-top:10px">
-        <div><label>Flight Time (Hours)</label><input id="ft_h" type="number" min="0" placeholder="Hours" /></div>
-        <div><label>Flight Time (Minutes)</label><input id="ft_m" type="number" min="0" max="59" placeholder="Minutes" /></div>
-        <div><label>Total Fuel (Kg)</label><input id="fuelTotal" type="number" placeholder="Total" /></div>
-        <div><label>Used Fuel (Kg)</label><input id="fuel" type="number" placeholder="Used" /></div>
-      </div>
-
-      <div class="row" style="margin-top:10px">
-        <div><label for="cargo">Cargo (Kg)</label><input id="cargo" type="number" placeholder="3000" /></div>
-        <div><label for="pax">Passengers (PAX)</label><input id="pax" type="number" placeholder="150" /></div>
-      </div>
-
-      <div style="margin-top:10px">
-        <label for="notes">Notes</label>
-        <textarea id="notes" placeholder="Smooth climb. Light crosswind on final. No violations."></textarea>
-      </div>
-
-      <div class="btnbar">
-        <button class="btn primary" id="btnGen">Generate / Update</button>
-        <button class="btn" id="btnPrint">Print / Save PDF</button>
-        <button class="btn ghost" id="btnShare">Copy Share Link</button>
-        <span class="hint">Generated on the client side · Logged securely in the INVA database</span>
-      </div>
     </div>
-  </div>
+    <!-- Right Panel (Receipt) -->
+    <div class="panel">
+      <div class="r-head">
+        <div class="brand">
+          <img class="logo" alt="INVA logo" data-candidates='["assets/inva-logo.png","assets/INVA Brand Logo.png","assets/logo.png","assets/inva-logo.jpg"]' />
+          <div>
+            <h1>Indian Virtual</h1>
+            <small>Career Mode Receipt</small>
+          </div>
+        </div>
+        <div id="rNo">Receipt #: INVA-0000</div>
+      </div>
 
-  <!-- ===== Right Panel (Receipt) ===== -->
-  <div class="panel">
-    <div class="r-head">
-      <div class="brand">
-        <img class="logo" alt="INVA logo" data-candidates='["assets/inva-logo.png","assets/INVA Brand Logo.png","assets/logo.png","assets/inva-logo.jpg"]' />
-        <div>
-          <h1>Indian Virtual</h1>
-          <small>Career Mode Receipt</small>
+      <div class="section">
+        <h3>Flight Summary</h3>
+        <div class="grid">
+          <div class="kv"><div class="k">Pilot</div><div class="v" id="o_pilot">—</div></div>
+          <div class="kv"><div class="k">Rank</div><div class="v" id="o_rank">—</div></div>
+          <div class="kv"><div class="k">Flight No.</div><div class="v" id="o_fn">—</div></div>
+          <div class="kv"><div class="k">From → To</div><div class="v" id="o_route">—</div></div>
+          <div class="kv"><div class="k">Aircraft</div><div class="v" id="o_ac">—</div></div>
         </div>
       </div>
-      <div id="rNo">Receipt #: INVA-0000</div>
-    </div>
-
-    <div class="section">
-      <h3>Flight Summary</h3>
-      <div class="grid">
-        <div class="kv"><div class="k">Pilot</div><div class="v" id="o_pilot">—</div></div>
-        <div class="kv"><div class="k">Rank</div><div class="v" id="o_rank">—</div></div>
-        <div class="kv"><div class="k">Flight No.</div><div class="v" id="o_fn">—</div></div>
-        <div class="kv"><div class="k">From → To</div><div class="v" id="o_route">—</div></div>
-        <div class="kv"><div class="k">Aircraft</div><div class="v" id="o_ac">—</div></div>
+      <div class="section">
+        <h3>Performance</h3>
+        <div class="pair"><div>Flight Time</div><div class="right" id="o_time">0h 0m</div></div>
+        <div class="pair"><div>Passengers</div><div class="right" id="o_pax">0</div></div>
+        <div class="pair"><div>Cargo</div><div class="right" id="o_cargo">0 kg</div></div>
+        <div class="pair"><div>Fuel Used</div><div class="right" id="o_fuel">0 kg</div></div>
       </div>
-    </div>
 
-    <div class="section">
-      <h3>Performance</h3>
-      <div class="pair"><div>Flight Time</div><div class="right" id="o_time">0h 0m</div></div>
-      <div class="pair"><div>Passengers</div><div class="right" id="o_pax">0</div></div>
-      <div class="pair"><div>Cargo</div><div class="right" id="o_cargo">0 kg</div></div>
-      <div class="pair"><div>Fuel Used</div><div class="right" id="o_fuel">0 kg</div></div>
-    </div>
-    <div class="section">
-      <h3>Earnings</h3>
-      <div class="pair"><div>Base Rate (₹/hr)</div><div class="right money" id="o_baseRate">₹0</div></div>
-      <div class="pair"><div>Multiplier</div><div class="right" id="o_mult">×1.00</div></div>
-      <div class="pair"><div>Flight Earnings</div><div class="right money" id="o_earn">₹0.00</div></div>
-      <div class="pair"><div>Payload Bonus</div><div class="right money" id="o_bonus">₹0.00</div></div>
-      <div class="pair"><div>Deductions (15% Tax)</div><div class="right money" id="o_deduct">₹0.00</div></div>
-      <hr class="line" />
-      <div class="pair"><div>Grand Total</div><div class="right money" id="o_total">₹0.00</div></div>
-      <div class="pair"><div>Estimated (USD)</div><div class="right money" id="o_usd">$0.00</div></div>
-    </div>
-
-    <div class="section" style="border-bottom:none">
-      <h3>Verification</h3>
-      <div class="qrwrap">
-        <div class="qr" id="qr"><div class="hint">QR loads summary</div></div>
-        <div class="hint">Scan to view a brief summary (no breakdown). Or share the link.</div>
+      <div class="section">
+        <h3>Earnings</h3>
+        <div class="pair"><div>Base Rate (₹/hr)</div><div class="right money" id="o_baseRate">₹0</div></div>
+        <div class="pair"><div>Multiplier</div><div class="right" id="o_mult">×1.00</div></div>
+        <div class="pair"><div>Flight Earnings</div><div class="right money" id="o_earn">₹0.00</div></div>
+        <div class="pair"><div>Payload Bonus</div><div class="right money" id="o_bonus">₹0.00</div></div>
+        <div class="pair"><div>Deductions (15% Tax)</div><div class="right money" id="o_deduct">₹0.00</div></div>
+        <hr class="line" />
+        <div class="pair"><div>Grand Total</div><div class="right money" id="o_total">₹0.00</div></div>
+        <div class="pair"><div>Estimated (USD)</div><div class="right money" id="o_usd">$0.00</div></div>
       </div>
-      <div class="note" style="margin-top:12px">Generated <span id="ts"></span></div>
-      <div class="hint" id="shortlink">—</div>
-    </div>
 
-    <div class="panel-footer">
-      <p>
-        © 2025 <strong>Indian Virtual (INVA)</strong>. All rights reserved.<br>
-        <span>
-          This tool is developed exclusively for <strong>INVA Career Mode</strong>.
-          All data and calculations are for simulation use within
-          <em>Infinite Flight</em> and hold no real-world financial value.<br><br>
-          All content is proprietary to <strong>INVA</strong> and designated exclusively for virtual use.
-          Any reproduction or use outside this context is strictly prohibited.<br><br>
-          <span style="color:#7b0f1d;font-weight:600">Authored and Developed by INVA</span>
-        </span>
-      </p>
-    </div>
-  </div>
-</div>
+      <div class="section" style="border-bottom:none">
+        <h3>Verification</h3>
+        <div class="qrwrap">
+          <div class="qr" id="qr"><div class="hint">QR loads summary</div></div>
+          <div class="hint">Scan to view a brief summary (no breakdown). Or share the link.</div>
+        </div>
+        <div class="note" style="margin-top:12px">Generated <span id="ts"></span></div>
+        <div class="hint" id="shortlink">—</div>
+      </div>
 
+      <!-- Right Footer (Custom T&C + Credits) -->
+      <div class="panel-footer">
+        <p>
+          © 2025 <strong>Indian Virtual (INVA)</strong>. All rights reserved.<br>
+          <span>
+            This tool is developed exclusively for <strong>INVA Career Mode</strong>. All data and calculations are for simulation use within <em>Infinite Flight</em> and hold no real-world financial value. Receipts are intended solely for internal tracking under <strong>INVA</strong>.
+            <br><br>
+            All content is proprietary to <strong>INVA</strong> and designated exclusively for virtual use within <em>Infinite Flight</em>. Any reproduction or use outside this context is strictly prohibited.
+            <br><br>
+            <span style="color:#7b0f1d;font-weight:600">Authored and Developed by INVA</span>
+          </span>
+        </p>
+      </div>
+    </div> <!-- /panel (right) -->
+  </div> <!-- /wrap -->
 <script>
 /* ====== LOGO FALLBACK LOADER ====== */
 (function(){
@@ -318,7 +356,8 @@ textarea{min-height:86px;resize:vertical}
   }
   document.addEventListener("DOMContentLoaded",()=>{ document.querySelectorAll('img[data-candidates]').forEach(tryLoad); });
 })();
-/* ====== SETTINGS ====== */
+
+/* ====== SETTINGS (Google Sheets logging) ====== */
 const SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzNjZVwFZAP9aoUqoCKZLtFsysKKuRDW05hcbF8KQCbOCGLstW5JxX5tTId7HZubn2g/exec";
 const SHEET_TAB = "Test 2";
 const LOG_TOKEN = "INVA_CM_Logger_A5H7B28";
@@ -330,200 +369,232 @@ const moneyUSD=n=>(isNaN(n)?0:n).toLocaleString("en-US",{style:"currency",curren
 const enc=obj=>btoa(unescape(encodeURIComponent(JSON.stringify(obj))));
 const dec=s=>JSON.parse(decodeURIComponent(escape(atob(s))));
 function baseUrlNoQuery(){try{const u=new URL(location.href);u.search="";u.hash="";return u.toString()}catch{return location.href.split("?")[0].split("#")[0]}}
-
 /* ---------- Ranks ---------- */
 const RANKS={
- "Yuvraj":{base:1333,maxBonus:2250},
- "Rajkumar":{base:1800,maxBonus:2750},
- "Rajvanshi":{base:2600,maxBonus:3500},
- "Rajdhiraj":{base:3100,maxBonus:4000},
- "Maharaja":{base:3500,maxBonus:4500},
- "Samrat":{base:3800,maxBonus:4800},
- "Chhatrapati":{base:4000,maxBonus:5000}
+  "Yuvraj":{base:1333,maxBonus:2250},
+  "Rajkumar":{base:1800,maxBonus:2750},
+  "Rajvanshi":{base:2600,maxBonus:3500},
+  "Rajdhiraj":{base:3100,maxBonus:4000},
+  "Maharaja":{base:3500,maxBonus:4500},
+  "Samrat":{base:3800,maxBonus:4800},
+  "Chhatrapati":{base:4000,maxBonus:5000}
 };
 
 /* ---------- Aircraft ---------- */
 const AIRCRAFT={
- "A319":{mult:1.00,seats:122,label:"A319-100"},
- "A320":{mult:1.00,seats:168,label:"A320-200"},
- "A321":{mult:1.05,seats:182,label:"A321-200"},
- "A359":{mult:1.35,seats:316,label:"A350-900"},
- "B738":{mult:1.00,seats:189,label:"B737-800"},
- "B38M":{mult:1.05,seats:178,label:"B737 MAX 8"},
- "B788":{mult:1.15,seats:256,label:"B787-8"},
- "B789":{mult:1.15,seats:299,label:"B787-9"},
- "B77L":{mult:1.25,seats:238,label:"B777-200LR"},
- "B77W":{mult:1.25,seats:342,label:"B777-300ER"},
- "B744":{mult:1.50,seats:423,label:"B747-400"}
+  "A319":{mult:1.00,seats:122,label:"A319-100"},
+  "A320":{mult:1.00,seats:168,label:"A320-200"},
+  "A321":{mult:1.05,seats:182,label:"A321-200"},
+  "A359":{mult:1.35,seats:316,label:"A350-900"},
+  "B738":{mult:1.00,seats:189,label:"B737-800"},
+  "B38M":{mult:1.05,seats:178,label:"B737 MAX 8"},
+  "B788":{mult:1.15,seats:256,label:"B787-8"},
+  "B789":{mult:1.15,seats:299,label:"B787-9"},
+  "B77L":{mult:1.25,seats:238,label:"B777-200LR"},
+  "B77W":{mult:1.25,seats:342,label:"B777-300ER"},
+  "B744":{mult:1.50,seats:423,label:"B747-400"}
 };
 const AIRCRAFT_ORDER=["A319","A320","A321","A359","B738","B38M","B788","B789","B77L","B77W","B744"];
 
 function fillAircraftSelect(){
- const sel=$("aircraft"); sel.innerHTML="";
- const ph=document.createElement("option");
- ph.disabled=true; ph.selected=true; ph.textContent="-- Select Aircraft --";
- sel.appendChild(ph);
- AIRCRAFT_ORDER.forEach(code=>{
-  const opt=document.createElement("option");
-  opt.value=code; opt.textContent=`${code} - ${AIRCRAFT[code].label}`;
-  sel.appendChild(opt);
- });
- sel.addEventListener("change",()=>{$("multiplierPill").value=`×${(AIRCRAFT[sel.value]?.mult||1).toFixed(2)}`;});
+  const sel=$("aircraft");
+  sel.innerHTML="";
+  const ph=document.createElement("option");
+  ph.disabled=true; ph.selected=true; ph.textContent="-- Select Aircraft --";
+  sel.appendChild(ph);
+  AIRCRAFT_ORDER.forEach(code=>{
+    const opt=document.createElement("option");
+    opt.value=code;
+    opt.textContent=`${code} - ${AIRCRAFT[code].label}`;
+    sel.appendChild(opt);
+  });
+  sel.addEventListener("change",()=>{$("multiplierPill").value=`×${(AIRCRAFT[sel.value]?.mult||1).toFixed(2)}`;});
 }
+
 /* ---------- Validation helpers ---------- */
-const rePilot=/^INVA[0-9]{3}$/;
+const rePilot=/^INVA[0-9]{3}$/; // INVA + exactly 3 digits (e.g., INVA001)
 const reFlight=/^[A-Z]{2,4}[0-9]{2,4}$/;
 const reICAO=/^[A-Z]{4}$/;
 function minsFromHM(h,m){const hh=Math.max(0,Number(h)||0);const mm=Math.max(0,Math.min(59,Number(m)||0));return hh*60+mm;}
-function hmDisp(mins){const h=Math.floor(mins/60),m=mins%60;return `${h}h ${m}m`;}
-
+function hmDisp(mins){const h=Math.floor(mins/60),m=mins%60;return `${h}h ${m}m`; }
 /* ---------- Compute ---------- */
 function compute(d){
- const rank=RANKS[d.rank]||{base:0,maxBonus:0};
- const ac=AIRCRAFT[d.aircraft]||{mult:1,seats:0};
- const hours=d.mins/60;
- const flightEarnings=rank.base*hours*ac.mult;
- const pax=Number(d.pax)||0, cargo=Number(d.cargo)||0, fuel=Number(d.fuel)||0;
- const passengerMass=pax*95;
- const totalPayload=passengerMass+cargo;
- const ppp=(fuel>0)?(totalPayload/fuel):0;
- const lf=(ac.seats>0)?Math.min(1,pax/ac.seats):0;
- let score=(lf+ppp)/2; if(score>1)score=1; if(score<0)score=0;
- const payloadBonus=Math.min(score*rank.maxBonus,rank.maxBonus);
- const subtotal=flightEarnings+payloadBonus;
- const deductions=+(subtotal*0.15).toFixed(2);
- const grand=Math.max(0, +(subtotal - deductions).toFixed(2));
- const usd=+(grand/83).toFixed(2);
- return {baseRate:rank.base, mult:ac.mult, flightEarnings, payloadBonus, deductions, grand, usd};
+  const rank=RANKS[d.rank]||{base:0,maxBonus:0};
+  const ac=AIRCRAFT[d.aircraft]||{mult:1,seats:0};
+  const hours=d.mins/60;
+  const flightEarnings=rank.base*hours*ac.mult;
+  const pax=Number(d.pax)||0, cargo=Number(d.cargo)||0, fuel=Number(d.fuel)||0;
+  const passengerMass=pax*95;
+  const totalPayload=passengerMass+cargo;
+  const ppp=(fuel>0)?(totalPayload/fuel):0;
+  const lf=(ac.seats>0)?Math.min(1,pax/ac.seats):0;
+  let score=(lf+ppp)/2; if(score>1)score=1; if(score<0)score=0;
+  const payloadBonus=Math.min(score*rank.maxBonus,rank.maxBonus);
+  const subtotal=flightEarnings+payloadBonus;
+  const deductions=+(subtotal*0.15).toFixed(2); // 15% tax
+  const grand=Math.max(0, +(subtotal - deductions).toFixed(2));
+  const usd=+(grand/83).toFixed(2);
+  return {baseRate:rank.base, mult:ac.mult, flightEarnings, payloadBonus, deductions, grand, usd};
 }
 
-/* ---------- Google Sheet Logger ---------- */
+/* ---------- Google Sheet (optional) ---------- */
 async function sendToSheet(payload){
- if(!SHEET_WEBAPP_URL){return{ok:false,skipped:true};}
- try{
-  await fetch(SHEET_WEBAPP_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload),mode:"no-cors"});
-  return{ok:true};
- }catch(err){console.warn("Sheet log failed:",err);return{ok:false,error:String(err)};}
+  if(!SHEET_WEBAPP_URL){ return { ok:false, skipped:true }; }
+  try{
+    await fetch(SHEET_WEBAPP_URL, { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify(payload), mode: "no-cors" });
+    return { ok:true };
+  }catch(err){
+    console.warn("Sheet log failed:", err);
+    return { ok:false, error: String(err) };
+  }
 }
 
 /* ---------- Render + QR + Share + Log ---------- */
 async function render(){
- const pilot=$("pilot").value.toUpperCase().trim();
- const rank=$("rank").value;
- const dateVal=$("date").value;
- const fn=$("fn").value.toUpperCase().trim();
- const dep=$("dep").value.toUpperCase().trim();
- const arr=$("arr").value.toUpperCase().trim();
- const aircraft=$("aircraft").value.trim();
- const mins=minsFromHM($("ft_h").value,$("ft_m").value);
- const pax=+($("pax").value||0);
- const cargo=+($("cargo").value||0);
- const fuelTotal=+($("fuelTotal").value||0);
- const fuel=+($("fuel").value||0);
- const notes=$("notes").value.trim();
+  const pilot=$("pilot").value.toUpperCase().trim(); // force uppercase before validation
+  const rank=$("rank").value;
+  const dateVal=$("date").value;
+  const fn=$("fn").value.toUpperCase().trim();
+  const dep=$("dep").value.toUpperCase().trim();
+  const arr=$("arr").value.toUpperCase().trim();
+  const aircraft=$("aircraft").value.trim();
+  const mins=minsFromHM($("ft_h").value,$("ft_m").value);
+  const pax=+($("pax").value||0);
+  const cargo=+($("cargo").value||0);
+  const fuelTotal=+($("fuelTotal").value||0);
+  const fuel=+($("fuel").value||0);
+  const notes=$("notes").value.trim();
 
- const mark=(el,bad)=>el.classList.toggle("error",bad);
- let bad=false;
- const pilotBad=!rePilot.test(pilot); mark($("pilot"),pilotBad); bad|=pilotBad;
- const fnBad=!reFlight.test(fn); mark($("fn"),fnBad); $("fnMsg").style.display=(fnBad&&fn.length)?"block":"none"; bad|=fnBad;
- const depBad=!reICAO.test(dep); mark($("dep"),depBad); bad|=depBad;
- const arrBad=!reICAO.test(arr); mark($("arr"),arrBad); bad|=arrBad;
- const timeBad=mins<=0; mark($("ft_h"),timeBad); mark($("ft_m"),timeBad); bad|=timeBad;
- const fuelBad=fuel<=0; mark($("fuel"),fuelBad); bad|=fuelBad;
- if(bad){alert("Please fix the highlighted fields."); return;}
+  // Validate
+  const mark=(el,bad)=>el.classList.toggle("error",bad);
+  let bad=false;
+  const pilotBad=!rePilot.test(pilot); mark($("pilot"),pilotBad); bad|=pilotBad;
+  const fnBad=!reFlight.test(fn); mark($("fn"),fnBad); $("fnMsg").style.display=(fnBad&&fn.length)?"block":"none"; bad|=fnBad;
+  const depBad=!reICAO.test(dep); mark($("dep"),depBad); bad|=depBad;
+  const arrBad=!reICAO.test(arr); mark($("arr"),arrBad); bad|=arrBad;
+  const timeBad=mins<=0; mark($("ft_h"),timeBad); mark($("ft_m"),timeBad); bad|=timeBad;
+  const fuelBad=fuel<=0; mark($("fuel"),fuelBad); bad|=fuelBad;
+  if(bad){ alert("Please fix the highlighted fields (Pilot Callsign must be INVA###)."); return; }
 
- const e=compute({rank, aircraft, mins, pax, cargo, fuel});
- $("o_pilot").textContent=pilot||"—";
- $("o_rank").textContent=rank||"—";
- $("o_fn").textContent=fn||"—";
- $("o_route").textContent=`${dep||"—"} → ${arr||"—"}`;
- $("o_ac").textContent=aircraft?`${aircraft} - ${AIRCRAFT[aircraft]?.label||""}`:"—";
- $("o_time").textContent=hmDisp(mins);
- $("o_pax").textContent=pax||0;
- $("o_cargo").textContent=`${cargo||0} kg`;
- $("o_fuel").textContent=`${fuel||0} kg`;
- $("o_baseRate").textContent=money(e.baseRate);
- $("o_mult").textContent=`×${e.mult.toFixed(2)}`;
- $("o_earn").textContent=money(e.flightEarnings);
- $("o_bonus").textContent=money(e.payloadBonus);
- $("o_deduct").textContent=money(e.deductions);
- $("o_total").textContent=money(e.grand);
- $("o_usd").textContent=moneyUSD(e.usd);
- $("ts").textContent=new Date().toLocaleString();
+  // Compute + Fill
+  const e=compute({rank, aircraft, mins, pax, cargo, fuel});
+  $("o_pilot").textContent=pilot||"—";
+  $("o_rank").textContent=rank||"—";
+  $("o_fn").textContent=fn||"—";
+  $("o_route").textContent=`${dep||"—"} → ${arr||"—"}`;
+  $("o_ac").textContent=aircraft ? `${aircraft} - ${AIRCRAFT[aircraft]?.label||""}` : "—";
+  $("o_time").textContent=hmDisp(mins);
+  $("o_pax").textContent=pax||0;
+  $("o_cargo").textContent=`${cargo||0} kg`;
+  $("o_fuel").textContent=`${fuel||0} kg`;
+  $("o_baseRate").textContent=money(e.baseRate);
+  $("o_mult").textContent=`×${e.mult.toFixed(2)}`;
+  $("o_earn").textContent=money(e.flightEarnings);
+  $("o_bonus").textContent=money(e.payloadBonus);
+  $("o_deduct").textContent=money(e.deductions);
+  $("o_total").textContent=money(e.grand);
+  $("o_usd").textContent=moneyUSD(e.usd);
+  $("ts").textContent=new Date().toLocaleString();
 
- const hash=(pilot+fn+dep+arr+aircraft+mins).split("").reduce((a,c)=>((a<<5)-a)+c.charCodeAt(0),0);
- const receiptNo="INVA-"+String(Math.abs(hash)%9000+1000);
- $("rNo").textContent="Receipt #: "+receiptNo;
+  // Deterministic receipt number
+  const hash=(pilot+fn+dep+arr+aircraft+mins).split("").reduce((a,c)=>((a<<5)-a)+c.charCodeAt(0),0);
+  const receiptNo="INVA-"+String(Math.abs(hash)%9000+1000);
+  $("rNo").textContent="Receipt #: "+receiptNo;
 
- const minimal={pilot,rank,fn,dep,arr,time:hmDisp(mins),total:e.grand,ts:Date.now()};
- const payload=enc(minimal);
- const url=`${baseUrlNoQuery()}?view=summary&d=${encodeURIComponent(payload)}`;
- $("shortlink").textContent=url;
+  // Summary payload + share URL
+  const minimal={pilot,rank,fn,dep,arr,time:hmDisp(mins),total:e.grand,ts:Date.now()};
+  const payload=enc(minimal);
+  const url=`${baseUrlNoQuery()}?view=summary&d=${encodeURIComponent(payload)}`;
+  $("shortlink").textContent=url;
 
- const img=document.createElement("img");
- img.alt="QR"; img.src=`https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${encodeURIComponent(url)}`;
- const qrw=$("qr"); qrw.innerHTML=""; qrw.appendChild(img);
+  // QR
+  const img=document.createElement("img");
+  img.alt="QR";
+  img.src=`https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${encodeURIComponent(url)}`;
+  const qrw=$("qr");
+  qrw.innerHTML="";
+  qrw.appendChild(img);
 
- $("btnShare").onclick=async()=>{
-  try{await navigator.clipboard.writeText(url);alert("Share link copied!");}
-  catch{prompt("Copy this link:",url);}
- };
+  // Copy link
+  $("btnShare").onclick=async()=>{
+    try{ await navigator.clipboard.writeText(url); alert("Share link copied!"); }
+    catch{ prompt("Copy this link:", url); }
+  };
 
- const log={
-  token:LOG_TOKEN,sheet:SHEET_TAB,date:dateVal,receipt_no:receiptNo,
-  pilot,rank,flight_no:fn,dep,arr,aircraft,
-  flight_time_h:Math.floor(mins/60),flight_time_m:mins%60,
-  passengers:pax,cargo_kg:cargo,fuel_total_kg:fuelTotal,fuel_used_kg:fuel,
-  base_rate_inr_per_hr:e.baseRate,multiplier:e.mult,
-  flight_earnings_inr:Number(e.flightEarnings.toFixed(2)),
-  payload_bonus_inr:Number(e.payloadBonus.toFixed(2)),
-  deductions_inr:Number(e.deductions.toFixed(2)),
-  grand_total_inr:Number(e.grand.toFixed(2)),usd_est:Number(e.usd.toFixed(2)),
-  share_url:url,notes
- };
- await sendToSheet(log);
+  // Log (optional)
+  const log = {
+    token: LOG_TOKEN, sheet: SHEET_TAB, date: dateVal, receipt_no: receiptNo, pilot, rank, flight_no: fn, dep, arr, aircraft,
+    flight_time_h: Math.floor(mins/60), flight_time_m: mins%60, passengers: pax, cargo_kg: cargo,
+    fuel_total_kg: fuelTotal, fuel_used_kg: fuel, base_rate_inr_per_hr: e.baseRate, multiplier: e.mult,
+    flight_earnings_inr: Number(e.flightEarnings.toFixed(2)), payload_bonus_inr: Number(e.payloadBonus.toFixed(2)),
+    deductions_inr: Number(e.deductions.toFixed(2)), grand_total_inr: Number(e.grand.toFixed(2)),
+    usd_est: Number(e.usd.toFixed(2)), share_url: url, notes
+  };
+  const res = await sendToSheet(log);
+  if(res.error){ console.warn("Logging error:", res.error); }
 }
-
-/* ---------- Summary View ---------- */
+/* ---------- Summary Mode ---------- */
 function openSummaryView(){
- const p=new URLSearchParams(location.search);
- if(p.get("view")==="summary"&&p.get("d")){
-  try{
-   const data=dec(p.get("d"));
-   const root=$("summaryRoot");
-   root.style.display="block";
-   root.innerHTML=`
-   <div class="summary">
-     <div class="top">
-       <img class="logo" alt="INVA" data-candidates='["assets/inva-logo.png","assets/INVA Brand Logo.png","assets/logo.png","assets/inva-logo.jpg"]'>
-       <div><h2>Indian Virtual</h2><small>Career Mode Receipt</small></div>
-     </div>
-     <div style="display:grid;gap:6px">
-       <div><strong>Pilot:</strong> ${data.pilot||"-"}</div>
-       <div><strong>Rank:</strong> ${data.rank||"-"}</div>
-       <div><strong>Flight No.:</strong> ${data.fn||"-"}</div>
-       <div><strong>From → To:</strong> ${(data.dep||"----")} → ${(data.arr||"----")}</div>
-       <div><strong>Time:</strong> ${data.time||"-"}</div>
-       <div><strong>Earnings:</strong> ${money(data.total||0)}</div>
-     </div>
-     <div style="margin-top:12px">
-       <a href="${baseUrlNoQuery()}" class="btn" style="text-decoration:none;border:1px solid #d7deea;border-radius:12px;padding:10px 14px;display:inline-block;background:#fff;font-family:'Zen Dots',system-ui,sans-serif">Open full generator</a>
-     </div>
-   </div>`;
-   return true;
-  }catch(e){alert("Invalid or corrupted summary link.");return false;}
- }
- return false;
+  const p=new URLSearchParams(location.search);
+  if(p.get("view")==="summary" && p.get("d")){
+    try{
+      const data=dec(p.get("d"));
+      const root=$("summaryRoot");
+      root.style.display="block";
+      root.innerHTML= `
+        <div class="summary">
+          <div class="top">
+            <img class="logo" alt="INVA" data-candidates='["assets/inva-logo.png","assets/INVA Brand Logo.png","assets/logo.png","assets/inva-logo.jpg"]' style="transform:scaleX(1.25)">
+            <div>
+              <h2>Indian Virtual</h2>
+              <small>Career Mode Receipt</small>
+            </div>
+          </div>
+          <div style="display:grid;gap:6px">
+            <div><strong>Pilot:</strong> ${data.pilot||"-"}</div>
+            <div><strong>Rank:</strong> ${data.rank||"-"}</div>
+            <div><strong>Flight No.:</strong> ${data.fn||"-"}</div>
+            <div><strong>From → To:</strong> ${(data.dep||"----")} → ${(data.arr||"----")}</div>
+            <div><strong>Time:</strong> ${data.time||"-"}</div>
+            <div><strong>Earnings:</strong> ${money(data.total||0)}</div>
+          </div>
+          <div style="margin-top:12px">
+            <a href="${baseUrlNoQuery()}" class="btn" style="text-decoration:none;border:1px solid #d7deea;border-radius:12px;padding:10px 14px;display:inline-block;background:#fff;font-family:'Zen Dots',system-ui,sans-serif">Open full generator</a>
+          </div>
+        </div>`;
+      // logo loader for summary
+      document.querySelectorAll('#summaryRoot img[data-candidates]').forEach(img=>{
+        const list = JSON.parse(img.getAttribute("data-candidates")||"[]");
+        let i=0;
+        const next=()=>{
+          if(i>=list.length){ img.style.display="none"; return; }
+          const src=list[i++];
+          const t=new Image();
+          t.onload=()=>{ img.src=src; img.style.display="block"; };
+          t.onerror=next;
+          t.src=src+"?v="+Date.now();
+        };
+        next();
+      });
+      return true;
+    }catch(e){
+      alert("Invalid or corrupted summary link.");
+      return false;
+    }
+  }
+  return false;
 }
 
 /* ---------- Init ---------- */
 document.addEventListener("DOMContentLoaded",()=>{
- if(openSummaryView()){}else{
-  $("appRoot").style.display="grid";
-  fillAircraftSelect();
-  $("btnGen").onclick=render;
-  $("btnPrint").onclick=()=>window.print();
- }
+  if(openSummaryView()){
+    // summary-only view
+  }else{
+    $("appRoot").style.display="grid";
+    fillAircraftSelect();
+    $("btnGen").onclick=render;
+    $("btnPrint").onclick=()=>window.print();
+  }
 });
 </script>
 </body>
