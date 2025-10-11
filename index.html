@@ -92,6 +92,11 @@
     body{background:#fff}
     .r-head #rNo { position: static !important; padding: 0 !important; border: 0 !important; background: transparent !important; }
   }
+  
+/* FINAL override: make rNo even smaller on mobile, no layout push */
+@media (max-width: 640px){
+  .r-head #rNo{ font-size: 4px !important; }
+}
 
   /* Summary card (shared link view) */
   .summary{max-width:560px;margin:28px auto;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 28px rgba(0,0,0,.06);padding:18px}
