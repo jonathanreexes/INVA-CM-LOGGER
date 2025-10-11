@@ -186,6 +186,31 @@
   }
 }
 
+/* ===== iOS/iPadOS form-control sizing fix (matches other pill boxes) ===== */
+@supports (-webkit-touch-callout: none) {
+  /* Prevent iOS auto-zoom and short control rendering */
+  input, select, textarea, .pill { 
+    font-size: 16px; /* iOS only */ 
+  }
+
+  /* Force consistent control height & vertical alignment */
+  select,
+  input[type="date"],
+  .pill {
+    min-height: 44px;        /* matches visual input height */
+    line-height: 22px;       /* centers text neatly */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 12px;
+  }
+
+  /* Keep select from looking squashed and overlapping */
+  select {
+    -webkit-appearance: menulist;
+    appearance: menulist;
+  }
+}
+
 </style>
 </head>
 <body>
