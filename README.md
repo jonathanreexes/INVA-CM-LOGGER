@@ -44,7 +44,7 @@ Copy code
 > This repository does not contain backend credentials, tokens, or live sheet identifiers.
 
 ## Technology Stack
-| Component  | Technology                  |
+|  Component |         Technology           |
 |------------|------------------------------|
 | Frontend   | HTML, CSS, JavaScript        |
 | Backend    | Google Apps Script (Web App) |
