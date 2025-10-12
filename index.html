@@ -206,6 +206,15 @@
     border-radius: 12px !important;
   }
 
+/* --- iOS fine-tune: make select & date exactly same visual height --- */
+select,
+input[type="date"] {
+  height: calc(var(--ctlH) - 2px) !important; /* match exact height */
+  padding-top: 9px !important;
+  padding-bottom: 9px !important;
+  line-height: 22px !important;
+}
+
   /* multiplier pill alignment */
   .pill {
     display: flex !important;
