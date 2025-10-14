@@ -1,5 +1,5 @@
 INVA Career Mode – PIREP Logger
-Version: v-2025-10-08-FINAL
+Version: CM-Beta-v2.1.0
 
 ------------------------------------------------------------
 © 2025 Jonathan Reeves. All Rights Reserved.
